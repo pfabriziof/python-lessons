@@ -38,4 +38,24 @@ class EmlParser(InformalParserInterface):
         pass
 
 
-# https://realpython.com/python-interface/#using-metaclasses
+"""Metaclasses"""
+
+
+class ParserMeta(type):
+    """A Parser metaclass used to create the parser class"""
+    def __instacecheck__(cls, instance):
+        return cls.__subclasscheck__(type(instance))
+
+    def __subclasscheck__(cls, subclass):
+        return (
+            hasattr(subclass, 'load_data_source') and
+            callable(subclass.load_data_source) and
+            hasattr
+        )
+
+
+class UpdateInformalParserInterface(metaclass=ParserMeta):
+    """This interface is used for concrete classes to inherit from.
+    There is no need to define the ParserMeta methods as any class
+    as they are implicitly made available via .__subclasscheck__().
+    """
