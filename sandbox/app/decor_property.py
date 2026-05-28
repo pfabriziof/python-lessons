@@ -15,6 +15,7 @@ class Rectangle:
         return f"{self._height:.1f}cm"
     @width.setter
     def width(self, new_width):
+        # we don't want the parameter name to be the same as the method name
         if new_width > 0:
             self._width = new_width
         else:
