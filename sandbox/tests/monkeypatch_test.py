@@ -1,5 +1,5 @@
 import requests
-from app import t
+from app import functions
 from pathlib import Path
 
 def test_getssh(monkeypatch):
@@ -10,7 +10,7 @@ def test_getssh(monkeypatch):
 
     monkeypatch.setattr(Path, 'home', mockreturn)
 
-    x = t.getssh()
+    x = functions.getssh()
     assert x == Path('/abc/.ssh')
 
 
@@ -28,6 +28,6 @@ def test_get_json(monkeypatch):
 
     monkeypatch.setattr(requests, 'get', mock_get)
 
-    result = t.get_json('https://fakeurl')
+    result = functions.get_json('https://fakeurl')
     assert result['mock_key'] == 'mock_response'
 

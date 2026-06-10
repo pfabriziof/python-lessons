@@ -1,6 +1,6 @@
 import pytest
 import logging
-from app import t
+from app import functions
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(name=__name__)
@@ -16,16 +16,16 @@ logger.setLevel(logging.INFO)
 def test_square(input_n: float, expected: float):
     logger.info(f'{input_n=}') # you can show this log by using the --log-cli-level=INFO flag
     print(f'{input_n=}') # you can show this log by using the -s flag
-    assert t.square(input_n) == expected
+    assert functions.square(input_n) == expected
 
 def test_square_float(): # you can show the name of the functions tests by using the -v flag
-    assert t.square(3.) == pytest.approx(9.)
+    assert functions.square(3.) == pytest.approx(9.)
 
 # You can organize tests inside classes, but it's not recommended since
 # it's better to create a new file for them,
 class TestSquare:
     def test_square(self):
-        assert t.square(3) == 9
+        assert functions.square(3) == 9
 
 # pytest is compatible with legacy unittest tests.
 # class TestLegacy(unittest.TestCase):
