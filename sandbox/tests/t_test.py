@@ -1,6 +1,6 @@
 import pytest
 import logging
-from app import functions
+from src import functions
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(name=__name__)

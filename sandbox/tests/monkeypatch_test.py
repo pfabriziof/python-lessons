@@ -1,5 +1,5 @@
 import requests
-from app import functions
+from src import functions
 from pathlib import Path
 
 def test_getssh(monkeypatch):

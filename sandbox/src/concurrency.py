@@ -23,11 +23,17 @@ def do_computation(num: int, iterations: int = 1000000) -> str:
     return f"Task {num} completed (result: {result})."
 
 async def do_async_work(num: int, duration: float = 0.1) -> str:
+    """Simulate an I/O bound task with async.
+
+    Simulates a task taht depends on waiting for a response (I/O),
+    but uses the modern approach with asyncio.
+    """
     await asyncio.sleep(duration)
     return f"Task {num} completed"
 
 
 def run_sync(tasks: int) -> list[str]:
+    """Execute tasks without concurrency."""
     results: list[str] = []
     for i in range(tasks):
         result = do_work(num=i, duration=0.1)
